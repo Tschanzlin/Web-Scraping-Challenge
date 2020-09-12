@@ -13,17 +13,47 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" ml-5 mr-5>
         <div class="jumbotron text-center">
             <h1>Mission to Mars</h1>
             <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
         </div>
 
         <!-- Mars News -->
-        <div class="row">
-            <h4 class="heading">{{Mars.news}}</h4>
+        <div class="row" ml-5 mr-5>
+            <h3 class="heading">{{Mars.title}}</h3>
+            <p> {{Mars.para}}</p>
         </div>
 
+        <!-- Mars images and Mars facts -->
+        <div class="row">
+            <div class="col-md-9" p-5>
+                <img src={{Mars.images}}>
+            </div>
+            <div class="col-md-3">
+                <table class=dataframe> {{Mars.facts}} </table>
+            </div>
+        </div>
+
+        <!-- Mars hemisphere images -->
+        <div class="row">
+            <div class="row" ml-5 mr-5>
+                <div class="col-md-6" p-5>
+                    <img src={{Mars.hemis[0]}}>
+                </div>
+                <div class="col-md-6" p-5>
+                    <img src={{Mars.hemis[1]}}>
+                </div>
+            </div>
+            <div class="row" p-5>
+                <div class="col-md-6">
+                    <img src={{Mars.hemis[2]}}>
+                </div>
+                <div class="col-md-6" p-5>
+                    <img src={{Mars.hemis[3]}}>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>

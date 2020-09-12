@@ -1,8 +1,14 @@
 # Web-Scraping-Challenge
 
+Overall Notes:
+- Program properly scrapes and stores data, but I am unable to complete the full rendering.  It also appears to srape twice, and i'd lik to spend more time cleaning and refining the programs.  They are not as tight as I woudl like. 
+- Biggest remaining hurdle was trying to figure out how to iterate through the Mars.hemi list of URL's in order to property display the images; I was unable to get this to work
+
+
 9/12:
 - Basic Flask app loading; mars facts table not loading properly
 - Considered splitting table into keys and values;  tried reading panda dataframe to html as simpler process
+- Code is working but cannot complete final rendering; two issues outstanding - the table displaying mars.facts and the hemispherical images; elected to show the URL link in text so that you can see the output works
 
 9/11:
 - Working scrape_mars.py file; created separate functions to scrape data sections and then a global function which calls each separate function

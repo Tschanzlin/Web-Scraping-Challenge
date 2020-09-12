@@ -25,7 +25,7 @@ browser = Browser("chrome", **executable_path, headless=False)
 Mars = {}
 
 
-# Global scrape function to calll each separate scrape function
+# Global scrape function to call each separate scrape function
 # --------------------------------------------------------------
 def scrape_all():
     # Calls each scrape function individually to compile complete set of data
@@ -57,9 +57,10 @@ def scrape_news():
         "div", class_="rollover_description_inner").text.strip()
 
     # Store news summaries
-    Mars["news"] = {"headline": news_title, "summary": news_para}
+    Mars["title"] = news_title
+    Mars["para"] = news_para
 
-    return Mars["news"]
+    return Mars
 
 
 # Function to scrape Mars featured image (using Splinter)
@@ -80,7 +81,7 @@ def scrape_pic():
     image_url = browser.url
 
     # Store image
-    Mars["images"] = {"featured image": image_url}
+    Mars["images"] = image_url
 
     return Mars["images"]
 
@@ -92,10 +93,15 @@ def scrape_facts():
     # Set URL and retrieve page
     url2 = "http://space-facts.com/mars/"
 
-    # Read to Pandas; store table
-    Mars["facts"] = pd.read_html(url2)[0]
+    # Read to Pandas; format
+    facts_df = pd.read_html(url2)[0]
+    facts_df.columns = ["Planet Profile", "Planet Data"]
+    facts_df.style.hide_index()
 
-    # For now, this is stored as an array; see what it looks like when rendered
+    # Store, print, and return as Mars["facts"]
+    Mars["facts"] = facts_df.to_html(
+        classes=["table-bordered", "table-striped", "table-hover"])
+    # print(Mars["facts"])
     return Mars["facts"]
 
 
@@ -130,12 +136,14 @@ def scrape_hemis():
         image_url = soup.find("div", class_="downloads").a["href"]
 
         # Create Hemisphere Image list
-        hemisphere_image_url.append({"title": title, "image_url": image_url})
+        # hemisphere_image_url.append({"title": title, "image_url": image_url})
+        hemisphere_image_url.append(image_url)
 
     # Store values
     Mars["hemis"] = hemisphere_image_url
 
     # Change this to just return Mars["hemis"] when combined with srape_images
+    print(Mars["hemis"])
     return Mars["hemis"]
 
 
