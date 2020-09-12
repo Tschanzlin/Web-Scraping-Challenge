@@ -1,8 +1,9 @@
 # Web-Scraping-Challenge
 
 Overall Notes:
-- Program properly scrapes and stores data, but I am unable to complete the full rendering.  It also appears to srape twice, and i'd lik to spend more time cleaning and refining the programs.  They are not as tight as I woudl like. 
-- Biggest remaining hurdle was trying to figure out how to iterate through the Mars.hemi list of URL's in order to property display the images; I was unable to get this to work
+- Program properly scrapes and stores data, but I am unable to complete the full rendering (cannot get table to format).  It also appears to srape twice, and I'd like to spend more time cleaning and refining the programs.  They are not as tight as I would like. 
+- I forced the hemispherical images by calling each element in the list individually, rather than looping through this list.  I tried several loop structures but could not get them to work.
+- Lastly, you'll note that the code in my Jupyter Notebook is slightly different.  The biggest difference is in the way the Mars dictionary is structured.  Oringally, I thought this woudl be a dictionary of dictionaries, but you can see I simplified in the Pyhton code to just structure as a list.  Therefore, each key in the dictionary (equivalent of Mongo collection) just refers to a single value or list of values.  
 
 
 9/12:
