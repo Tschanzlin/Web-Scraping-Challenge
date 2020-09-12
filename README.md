@@ -1,5 +1,17 @@
 # Web-Scraping-Challenge
 
+9/12:
+- Basic Flask app loading; mars facts table not loading properly
+- Considered splitting table into keys and values;  tried reading panda dataframe to html as simpler process
+
+9/11:
+- Working scrape_mars.py file; created separate functions to scrape data sections and then a global function which calls each separate function
+- While some of the code may be redundant, I felt the code would be better organized and cleaner by not trying to do too much with one function
+
+9/10:
+- Starting scrape_mars.py file
+- Reviewing MongoDB documentation to determine best way to store scraped data in order to recall for the app.py
+
 9/7:  USGS Astreology Site images
 - Tried using Splinter to navigate image pages and pull URL from final page; however, I could not get the Splinter function "browser.url" to load the proper URL so I reverted to BeautifulSoup 
 - I created a Soup object "images" to capture the division class "item" for all four mars hemispheres; each "image" contains the title to the image file and a partial href

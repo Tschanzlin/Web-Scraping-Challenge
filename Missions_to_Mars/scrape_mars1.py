@@ -1,5 +1,6 @@
 
 # Import modules
+import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
 import requests
@@ -17,21 +18,26 @@ executable_path = {
     "executable_path": "C:/Users/todds/Desktop/Library/chromedriver"}
 browser = Browser("chrome", **executable_path, headless=False)
 
-# NOTE:  RESET THIS FUNCTION AND CORRECTLY TAB ALL CODE BELOW
-# def scrape_images():
-# Ultimate calls sub-functions:
-# scrape_news()
-# scrape_pic()
-# scrape_facts()
-# scrape_hemis()
-
 
 # Set global dictionary to store values for all scrapes
 Mars = {}
 
-
-# Function to scrape Mars news
+# NOTE:  RESET THIS FUNCTION AND CORRECTLY TAB ALL CODE BELOW
+# # Global scrape function to calll each separate scrape function
 # ------------------------------------------------------------------------------------------------
+
+
+def scrape_all():
+    # Calls each scrape function individually to compile complete set of data
+    scrape_news()
+    scrape_pic()
+    scrape_facts()
+    scrape_hemis()
+
+# Function to scrape Mars news (using Beautiful Soup)
+# ------------------------------------------------------------------------------------------------
+
+
 def scrape_news():
     # Define storage variables
 
@@ -54,7 +60,7 @@ def scrape_news():
     return print(Mars["news"])
 
 
-# Function to scrape Mars featured image
+# Function to scrape Mars featured image (using Splinter)
 # ------------------------------------------------------------------------------------------------
 def scrape_pic():
     # Define storage variables
@@ -76,8 +82,23 @@ def scrape_pic():
 
     return print(Mars["images"])
 
+# Function to scrape Mars facts (using Pandas)
+# ------------------------------------------------------------------------------------------------
 
-# Function to scrape Mars hemisphere images
+
+def scrape_facts():
+
+    # Set URL and retrieve page
+    url2 = "http://space-facts.com/mars/"
+
+    # Read to Pandas; store table
+    Mars["facts"] = pd.read_html(url2)[0]
+
+    # For now, this is stored as an array; see what it looks like when rendered
+    return print(Mars["facts"])
+
+
+# Function to scrape Mars hemisphere images (using Beautiful Soup)
 # ------------------------------------------------------------------------------------------------
 def scrape_hemis():
     #  Set URL, visit page, inspect HTML code
@@ -122,7 +143,4 @@ def scrape_hemis():
     return print(Mars["hemis"])
 
 
-# Calls scrape_hemis functions, which for now prints Mars["hemis']; See scrape_images() function
-scrape_news()
-scrape_pic()
-scrape_hemis()
+scrape_all()
